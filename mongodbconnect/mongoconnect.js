@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const config = require("../config/env");
 
-
 mongoconnect = () => {
     mongoose.connect(
-        config.mongodbAtlas.connectionString,
+        config.mongodblocal.connectionString,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
