@@ -10,7 +10,7 @@ const userpoints = require('./routes/userpoints')
 
 const mongoconnect = require("./mongodbconnect/mongoconnect")
 
-const PORT = process.env.PORT || 4023
+const PORT = process.env.PORT || 3000
 
 mongoconnect()
 app.listen(PORT, err => {
