@@ -6,7 +6,10 @@ const UserPoints = require('../models/userpoints')
 router.get("/getUserPoints", (req, res) => {
     const trasherId = req.query.trasherId;
     UserPoints.find({ trasherId: trasherId }, (err, docs) => {
-        res.json({ points: docs[0].points })
+        if(docs.length!=0)
+            res.json({ points: docs[0].points })
+        else
+            res.json({ points: 0 })
     })
 })
 router.get("/updateUserPoints", (req, res) => {
