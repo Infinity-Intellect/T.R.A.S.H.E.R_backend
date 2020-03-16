@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const bodyparser = require('body-parser')
+const cors = require('cors')
 
 const login = require('./routes/login')
 const signup = require('./routes/signup')
@@ -24,6 +25,7 @@ app.listen(PORT, err => {
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: true }))
+app.use(cors())
 
 app.use("/login", login)
 app.use("/signup", signup)
@@ -33,4 +35,7 @@ app.use("/userpoints", userpoints)
 
 app.get("/", (req, res) => {
     res.json({ message: "Success !" })
+})
+app.get("/map", (req, res) => {
+    res.sendFile("maptest.html", { root: '.' })
 })

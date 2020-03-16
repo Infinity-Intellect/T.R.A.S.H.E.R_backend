@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const BinWeights = require('../models/binweights')
+const MasterBinDetails = require("../models/masterBinDetails")
 
 router.get("/addWeight", (req, res) => {
     const binId = req.query.binId
@@ -31,7 +32,19 @@ router.get("/addWeight", (req, res) => {
         }
     })
 })
+router.get("/binDetails", (req, res) => {
+    const binId = req.query.binId;
+    MasterBinDetails.find({ binId: binId }, (err, docs) => {
+        if (!err) {
+            //console.log(docs)
+            res.json({ weight: docs[0].currentCapacityWeight, height: docs[0].currentCapacityHeight })
+        }
+        else {
+            res.json({ error: err })
+        }
+    })
 
+})
 
 
 

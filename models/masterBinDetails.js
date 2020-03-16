@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 var masterBinDetailsSchema = new mongoose.Schema({
     binId: {
-        type: Number,
+        type: String,
         required: "Id required"
     },
     currentCapacityWeight: {
@@ -11,9 +11,12 @@ var masterBinDetailsSchema = new mongoose.Schema({
     currentCapacityHeight: {
         type: Number
     },
-    location: {
-        type: String
+    latitude: {
+        type: Number
+    },
+    longitude: {
+        type: Number
     }
 })
 
-const MasterBinDetails = module.exports = mongoose.model('masterBinDetails', masterBinDetailsSchema)
+const MasterBinDetails = module.exports = mongoose.model('masterbindetails', masterBinDetailsSchema)
